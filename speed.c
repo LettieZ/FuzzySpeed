@@ -34,7 +34,7 @@ int_16 get_speed_set(void) {
 
 		E = (int_32)(ek / ke - 0.5);
 	}
-	//½«EµÄÂÛÓò×ª»»µ½Ä£ºý¿ØÖÆÆ÷µÄÂÛÓò
+	//å°†Eçš„è®ºåŸŸè½¬æ¢åˆ°æ¨¡ç³ŠæŽ§åˆ¶å™¨çš„è®ºåŸŸ
 	if (E > 6)
 		E = 6;
 	else if (E < -6)
@@ -46,7 +46,7 @@ int_16 get_speed_set(void) {
 	else {
 
 		EC = (int_16)(eck / kec - 0.5);
-	}//½«ECµÄÂÛÓò×ª»»µ½Ä£ºý¿ØÖÆÆ÷µÄÂÛÓò
+	}//å°†ECçš„è®ºåŸŸè½¬æ¢åˆ°æ¨¡ç³ŠæŽ§åˆ¶å™¨çš„è®ºåŸŸ
 	if (EC > 6)
 		EC = 6;
 	else if (EC < -6)
@@ -56,12 +56,14 @@ int_16 get_speed_set(void) {
 	return speed_target ;
 }
 
+
+ //****************å¢žé‡å¼PIDæŽ§åˆ¶ç®—æ³•***************
 int speed_control(void)
 {
 	int i;
-	speed_set=get_speed_set();//ÉèÖÃ³µËÙ                  
+	speed_set=get_speed_set();//è®¾ç½®è½¦é€Ÿ                  
 	
-	//ÉèÖÃPID²ÎÊý
+	//è®¾ç½®PIDå‚æ•°
 	kp_motor=33;
 	ki_motor=0.038;
 	kd_motor=0.04;
@@ -75,5 +77,5 @@ int speed_control(void)
   	
   	speed_set_old=speed_set;
   	pwm1_old=pwm1; 
-  	return pwm1;//Êä³öPWM²¨
+  	return pwm1;//è¾“å‡ºPWMæ³¢
 }

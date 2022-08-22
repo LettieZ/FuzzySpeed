@@ -1,12 +1,14 @@
 ﻿// Fuzzy.cpp : 定义控制台应用程序的入口点。
 //赛道偏左error为负，赛道偏右error为正；
-/*小车向左入弯error为负，error_delta为负
+/*
+*小车向左入弯error为负，error_delta为负
 *小车向左出弯error为负，error_delta为正
 *小车向右入弯error为正，error_delta为正
 *小车向右出弯error为正，error_delta为负
 */
 
 //#include "stdafx.h"
+//#include<stdio.h>
 #include <iostream>
 #include <math.h>
 using namespace std;
@@ -18,6 +20,10 @@ using namespace std;
 
 int Input1_Terms_Index = 0, Input2_Terms_Index = 0, Output_Terms_Index = 0;///<索引参数，均从0增加到6查询7档
 
+
+//1、设置偏差e、偏差变化ec和控制量u的基本论域为[-6,6]，并划分为13个等级，即{-6，-5，-4，-3，-2，-1，0，1，2，3，4，5，6}
+//2、E、EC和U均使用三角形隶属函数进行模糊化
+//3、对模糊量EC、E和U设置相关的模糊控制规则表
 
 /**
 * 列坐标：NB,NM,NS,O,PS,PM,PB
@@ -196,7 +202,7 @@ void calculate()
 	}
 }
 
-int main()
+int main() //_FuzzySpeed
 {
 	calculate();
 	float ek = 5;
